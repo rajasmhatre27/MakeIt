@@ -6,12 +6,14 @@ import WhyChooseUs from "../components/WhyChooseUs";
 import PopularLocations from "../components/PopularLocations";
 import Footer from "../components/Footer";
 import Testimonials from "../components/Testimonials";
+import PropertyList from "../components/PropertyList";
 
 const Home = () => {
   return (
     <>
       <HeroSection/>
       <PropertiesCategories/>
+      <PropertyList/>
       <FeaturedProperties/>
       <WhyChooseUs/>
       <PopularLocations/>

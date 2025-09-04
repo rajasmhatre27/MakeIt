@@ -1,8 +1,15 @@
 import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 import HeroBanner from "../assets/images/HeroSectionBanner.png";
 
 const HeroSection = () => {
   const [activeTab, setActiveTab] = useState("buy");
+  const navigate = useNavigate();
+
+  const handleTabClick = (tab) => {
+    setActiveTab(tab);
+    navigate(`/${tab}`); // 👈 navigate to route (/buy, /rent, /sell)
+  };
 
   return (
     <section
@@ -27,7 +34,7 @@ const HeroSection = () => {
 
         {/* Role Tabs */}
         <div className="flex justify-center gap-6">
-          {["buy", "sell"].map((tab) => (
+          {["buy", "rent", "sell"].map((tab) => (
             <button
               key={tab}
               className={`px-10 py-3 rounded-full text-lg font-semibold transition duration-300 transform ${
@@ -35,7 +42,7 @@ const HeroSection = () => {
                   ? "bg-gradient-to-r from-blue-500 to-blue-700 text-white shadow-lg scale-110 hover:shadow-blue-400/50"
                   : "bg-white/90 text-gray-900 hover:bg-gray-200 hover:scale-105"
               }`}
-              onClick={() => setActiveTab(tab)}
+              onClick={() => handleTabClick(tab)}
             >
               {tab.charAt(0).toUpperCase() + tab.slice(1)}
             </button>

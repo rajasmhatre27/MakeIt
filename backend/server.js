@@ -3,7 +3,7 @@ import mongoose from "mongoose";
 import cors from "cors";
 import dotenv from "dotenv";
 import userRoutes from "./routes/userRoutes.js"; // <-- import routes
-
+import propertyRoutes from "./routes/PropertyRoutes.js"
 dotenv.config();
 
 const app = express();
@@ -17,7 +17,7 @@ mongoose.connect(process.env.MONGO_URI)
 
 // Routes
 app.use("/api/users", userRoutes); // <-- register route
-
+app.use("/api/properties" ,propertyRoutes)
 // Default
 app.get("/", (req, res) => {
   res.send("API is running...");
